@@ -5,8 +5,13 @@ import boto3
 
 # print("Imported successfully....")
 
-prompt = """
+prompt1 = """
         You are a smart assistant that helps you to order food.
+
+"""
+
+prompt="""
+    You are a cricket expert, can you tell me whether Virat Kohli is overrated.
 
 """
 
