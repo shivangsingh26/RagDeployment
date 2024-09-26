@@ -4,11 +4,12 @@
 # Generates embeddings for the document chunks using AWS Bedrock's Titan embedding model.
 # Stores these embeddings in a FAISS vector database, saving the index locally for future use, like document similarity search or question answering over documents.
 
+
 from langchain_community.document_loaders import PyPDFDirectoryLoader #FOR LOADING DATA
 from langchain.text_splitter import RecursiveCharacterTextSplitter #FOR SPLITTING DATA INTO CHUNKS
-from langchain.vectorstores import FAISS #FOR CREATING VECTOR DATABASE
-from langchain_community.embeddings import BedrockEmbeddings #FOR CREATING EMBEDDINGS
-from langchain.llms.bedrock import Bedrock #FOR CREATING LLM
+from langchain_community.vectorstores import FAISS #FOR CREATING VECTOR DATABASE
+from langchain_aws import BedrockEmbeddings #FOR CREATING EMBEDDINGS
+from langchain.llms import Bedrock #FOR CREATING LLM
 
 import boto3
 

@@ -23,7 +23,6 @@ payload = {
     "max_gen_len" : 512,
     "temperature" : 0.5,
     "top_p" : 0.9
-
 }
 
 body = json.dumps(payload)
