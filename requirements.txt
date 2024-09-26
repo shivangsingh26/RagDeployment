@@ -11,5 +11,3 @@ streamlity
 pypdf
 faiss-cpu
 langchain-aws
-
--e .
