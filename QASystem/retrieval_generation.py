@@ -50,8 +50,9 @@ def get_response_llm(llm,vectorstore_faiss,query):
     answer=qa({"query":query})
     return answer["result"]
     
+
 if __name__=='__main__':
-    #docs=data_ingestion()
+    #This is a main method
     #vectorstore_faiss=get_vector_store(docs)
     faiss_index=FAISS.load_local("faiss_index",bedrock_embeddings,allow_dangerous_deserialization=True)
     query="How to answer the question Tell me about yourself?"
