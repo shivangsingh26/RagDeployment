@@ -19,7 +19,7 @@ concise answer to the question at the end but usse atleast summarize with
 just say that you don't know, don't try to make up an answer.
 <context>
 {context}
-</context
+</context>
 
 Question: {question}
 
@@ -31,7 +31,9 @@ PROMPT=PromptTemplate(
 
 
 def get_llama3_llm():
-    llm=Bedrock(model_id="meta.llama3-8b-instruct-v1:0",client=bedrock)
+    llm=Bedrock(model_id="meta.llama3-70b-instruct-v1:0",client=bedrock)
+    # llm=Bedrock(model_id="us.meta.llama3-2-1b-instruct-v1:0",client=bedrock)
+
     
     return llm
 
@@ -49,6 +51,37 @@ def get_response_llm(llm,vectorstore_faiss,query):
     )
     answer=qa({"query":query})
     return answer["result"]
+
+# def get_llama3_llm():
+#     llm = Bedrock(
+#         model_id="meta.llama3-70b-instruct-v1:0",
+#         client=bedrock,
+#         model_kwargs={
+#             "temperature": 0.7,
+#             "max_tokens": 2000,
+#             "inference_profile": "arn:aws:bedrock:ca-central-1::foundation-model/meta.llama3-70b-instruct-v1:0"  # Replace with your ARN
+#         }
+#     )
+#     return llm
+
+# def get_response_llm(llm, vectorstore_faiss, query):
+#     try:
+#         qa = RetrievalQA.from_chain_type(
+#             llm=llm,
+#             chain_type="stuff",
+#             retriever=vectorstore_faiss.as_retriever(
+#                 search_type="similarity",
+#                 search_kwargs={"k": 3}
+#             ),
+#             return_source_documents=True,
+#             chain_type_kwargs={"prompt": PROMPT}
+#         )
+#         answer = qa({"query": query})
+#         return answer["result"]
+#     except Exception as e:
+#         print(f"Error during LLM inference: {str(e)}")
+#         # You might want to return a default message or raise the error
+#         raise e
     
 
 if __name__=='__main__':

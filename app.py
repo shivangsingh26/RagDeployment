@@ -21,22 +21,22 @@ bedrock=boto3.client(service_name="bedrock-runtime")
 bedrock_embeddings=BedrockEmbeddings(model_id="amazon.titan-embed-text-v2:0",client=bedrock)
 
 def main():
-    st.set_page_config("QA with Doc")
-    st.header("QA with Doc using langchain and AWSBedrock")
+    st.set_page_config("PDF-Q/A-Bot")
+    st.header("Document Q/A Bot using AWS and Langchain")
     
     user_question=st.text_input("Ask any question from the pdf file")
     
     with st.sidebar:
         st.title("Update or Create the Vector Store")
-        if st.button("vectors update"):
-            with st.spinner("processing..."):
+        if st.button("Vectors Update"):
+            with st.spinner("Processing..."):
                 docs=data_ingestion()
                 get_vector_store(docs)
-                st.success("done")
+                st.success("Done")
         st.title("Run LLM")
 
-        if st.button("llama model"):
-            with st.spinner("processing..."):
+        if st.button("LLama Model"):
+            with st.spinner("Processing..."):
                 faiss_index=FAISS.load_local("faiss_index",bedrock_embeddings,allow_dangerous_deserialization=True)
                 llm=get_llama3_llm()
                 

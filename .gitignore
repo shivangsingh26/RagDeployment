@@ -1,3 +1,4 @@
 .env
-llmOpsVenv
 llmOps_accessKeys.csv
+venvLLMOps
+demo.png
